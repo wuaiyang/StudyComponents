@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	window.onload = function(){
+	   function Aaa(){
+	      this.name = 'A';
+	   }
+   
+	   Aaa.prototype.showName = function(){
+	      alert(this.name);
+	   }
+   
+	   function Bbb(){
+   
+	   }
+
+	   var F = function(){};
+	   	F.prototype = Aaa.prototype;
+	   	Bbb.prototype = new F();
+	   	Bbb.prototype.constructor = Bbb;
+	   
+   
+	   //属性和方法要分别继承
+   
+	   var b1 = new Bbb();
+   
+	   b1.showName();
+	}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#div1 div{width: 200px;height: 200px;border:1px #000 solid; display: none;}
+		.active{background: red;}
+	</style>
+	<script type="text/javascript">
+		/*window.onload = function(){
+			var oDiv1 = document.getElementById('div1');
+			var aInput = oDiv1.getElementsByTagName('input');
+			var aDiv = oDiv1.getElementsByTagName('div');
+
+			for(var i=0; i<aInput.length; i++){ 
+				aInput[i].index = i;
+				aInput[i].onclick = function(){
+					for(var i=0; i<aInput.length; i++){ aInput[i].className = '';
+						 aDiv[i].style.display = 'none';
+				    }
+                    this.className='active';
+                    aDiv[this.index].style.display = 'block';
+				}   
+			}
+		}*/
+    /*
+    var oDiv1 = null;
+    var aInput = null;
+    var aDiv = null;
+    
+    window.onload = function(){
+			oDiv1 = document.getElementById('div1');
+			aInput = oDiv1.getElementsByTagName('input');
+			aDiv = oDiv1.getElementsByTagName('div');
+			
+			init();
+	}
+
+	function init(){
+		for(var i=0; i<aInput.length; i++){ 
+				aInput[i].index = i;
+				aInput[i].onclick = change;
+			}
+	}
+     
+
+    function change(){
+     	for(var i=0; i<aInput.length; i++){ 
+			aInput[i].index = i;
+			aInput[i].onclick = function(){
+				for(var i=0; i<aInput.length; i++){ aInpu[i].className = '';
+					 aDiv[i].style.display = 'none';
+			    }
+                this.className='active';
+                aDiv[this.index].style.display = 'block';
+			}   
+		}
+    }*/
+
+    window.onload = function(){
+		var t1 = new Tab();
+		t1.init();
+	};
+
+	function Tab(){
+		this.oDiv1 = document.getElementById('div1');
+		this.aInput = this.oDiv1.getElementsByTagName('input');
+		this.aDiv = this.oDiv1.getElementsByTagName('div');
+	};
+
+	Tab.prototype.init = function(){
+		var This = this;
+		for(var i=0; i<this.aInput.length; i++){ 
+			this.aInput[i].index = i;
+			this.aInput[i].onclick = function(){
+                This.change(this);
+			};
+		} 
+	};
+
+	Tab.prototype.change = function(_this){
+		for(var i=0; i<this.aInput.length; i++){ 
+			this.aInput[i].className = '';
+			this.aDiv[i].style.display = 'none';
+		}
+        _this.className='active';
+        this.aDiv[_this.index].style.display = 'block';
+	};
+
+
+
+
+	</script>
+</head>
+<body>
+   <div id="div1">
+   	  <input class="active" type="button" value="1">
+   	  <input type="button" value="2">
+   	  <input type="button" value="3">
+   	  <div style="display: block;">1111</div>
+   	  <div>2222</div>
+   	  <div>3333</div>
+   </div>
+	
+</body>
+</html>
